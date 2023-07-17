@@ -2,11 +2,11 @@ install-server:
 	cd server && make install
 
 install-custom-kernels:
-	if [ "$$BUILD_EXTENSIONS" = "True" ]; then cd server/custom_kernels && python setup.py install; else echo "Custom kernels are disabled, you need to set the BUILD_EXTENSIONS environment variable to 'True' in order to build them. (Please read the docs, kernels might not work on all hardware)"; fi
+	if [ "$$BUILD_EXTENSIONS" = "True" ]; then cd server/custom_kernels && python3.9 setup.py install; else echo "Custom kernels are disabled, you need to set the BUILD_EXTENSIONS environment variable to 'True' in order to build them. (Please read the docs, kernels might not work on all hardware)"; fi
 
 install-integration-tests:
-	cd integration-tests && pip install -r requirements.txt
-	cd clients/python && pip install .
+	cd integration-tests && pip3.9 install -r requirements.txt
+	cd clients/python && pip3.9 install .
 
 install-router:
 	cd router && cargo install --path .
